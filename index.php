@@ -9,43 +9,31 @@
 <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </head>
 <style>
+table {
+  border-collapse: collapse;
+  width: 80%;
+  align: center;
+}
 
-.centerTable { margin: 5%; background-color:#E3F2FD; padding:10px; width:300px;}
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+.centerTable { margin: 20px auto; }
 
 </style>
 
-<div class="centerTable">
-
-    <form action="insignies.php" method="post" enctype="multipart/form-data">
-    <h4>Nova insignia</h4>
-
-    <h6>Nom:</h6>
-        <input type="text" name="nom" placeholder="nom insignia"><br>
-
-        <h6>Imatge:</h6>
-        
-        <input type="file" name="image"> <br>
-
-        <h6>Limit</h6>
-        <input type="number" name="limit" value=0><br>
-
-        <h6>Data límit</h6>
-        <input type="date" name="datalimit" value="<?php echo date('Y-m-d');?>"><br>
-
-        <h6>Descripcio</h6>
-        <textarea type="textarea" name="descripcio" placeholder="no home no"></textarea>
-
-        <h6>Actiu</h6>
-        <input type="radio" name="actiu" value="si" checked> SI
-        <input type="radio" name="actiu" value="no"> NO<br>
-
-        <input type="submit" value="Enviar dades"><br>
-
-    </form>
-
-<?php
-
-?>
-
+<div id='general'>
+<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="window.location.href='novainsignia.php'">
+  Nova insignia
+</button>
+  
 </div>
 </html>
