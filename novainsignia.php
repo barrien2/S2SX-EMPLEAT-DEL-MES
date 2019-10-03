@@ -7,11 +7,17 @@
 </head>
 <style>
 
-.centerTable { margin: 5%; background-color:#E3F2FD; padding:10px; width:300px;}
+.centerTable { margin: 10px; background-color:#E3F2FD; padding:10px; width:300px;}
 
 </style>
 
-<div class="centerTable">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <?php
+      include("header.php");
+    ?>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <div class="centerTable">
 
     <form action="insignies.php" method="post" enctype="multipart/form-data">
         <h4>Nova insignia</h4>
@@ -33,16 +39,30 @@
         <textarea type="textarea" name="descripcio" placeholder="no home no" required></textarea>
 
         <h6>Actiu</h6>
-        <input type="radio" name="actiu" value="si" checked> SI
-        <input type="radio" name="actiu" value="no"> NO<br>
-
-        <input type="submit" value="Enviar dades"><br>
-
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="actiu1">
+          <input checked class="mdl-radio__button" id="actiu1" name="actiu" type="radio"
+           value="on">
+          <span class="mdl-radio__label">Si</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="actiu2">
+          <input class="mdl-radio__button" id="actiu2" name="actiu" type="radio" value="off">
+          <span class="mdl-radio__label">No</span>
+        </label>
+        <br/>
+        <input type="submit" value="Enviar dades" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><br>
     </form>
-
-<?php
-
-?>
-
 </div>
+
+
+
+
+      </div>
+    </main>
+</div>
+
+
+
+
+
+
 </html>
