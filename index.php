@@ -38,7 +38,7 @@
     ?>
     <main class="mdl-layout__content">
       <div class="page-content">
-        <h1>Amazin</h1>
+        <h1>L'empleat d'aquest més és: Vanessa Moreno</h1>
       </div>
     </main>
   </div>

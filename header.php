@@ -10,20 +10,16 @@
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation. We hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-navigation__link" href="index.php">Inici</a>
         <a class="mdl-navigation__link" href="novainsignia.php">Inserir nova insignia</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
-        <a class="mdl-navigation__link" href="">Link</a>
       </nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">Title</span>
     <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="index.php">Inici</a>
       <a class="mdl-navigation__link" href="novainsignia.php">Inserir nova insignia</a>
-      <a class="mdl-navigation__link" href="">Link</a>
-      <a class="mdl-navigation__link" href="">Link</a>
-      <a class="mdl-navigation__link" href="">Link</a>
     </nav>
   </div>
 
