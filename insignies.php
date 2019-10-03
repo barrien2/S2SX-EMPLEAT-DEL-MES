@@ -9,14 +9,14 @@ if(is_dir($target_dir)){
   if(isset($_FILES["image"]["name"]) && $_FILES["image"]["name"] != '') {
 
     $check = getimagesize($_FILES["image"]["tmp_name"]);
-    
+
     if($check !== false) {
       move_uploaded_file($_FILES["image"]['tmp_name'], $target_file);
       $uploadOk = 1;
     } 
   }
   else {
-    
+
     $uploadOk = 0;
   }
 }
@@ -61,9 +61,10 @@ if(is_dir($target_dir)){
       <div class="page-content">
         <div>
           <table class="centerTable" style="overflow-x:auto;">
-            
+
             <tr>
               <th>nom</th>
+              <th>valor</th>
               <th>imatge</th>
               <th>data limit</th>
               <th>limit</th>
@@ -71,9 +72,10 @@ if(is_dir($target_dir)){
               <th>actiu</th>
             </tr>
             <?php
-            
+
             echo "<tr>";
             echo "<td>".$_POST["nom"]."</td>";
+            echo "<td>".$_POST["valor"]."</td>";
             if($uploadOk == 1){
               echo "<td>".' <img src = "uploads/'.$_FILES["image"]["name"].'" height="150">';
             }else{
@@ -84,8 +86,8 @@ if(is_dir($target_dir)){
             echo "<td>".$_POST['descripcio']."</td>";
             echo "<td>".$_POST['actiu']."</td>";
             echo "</tr>";
-            
-            
+
+
             ?>
           </table>
         </div>

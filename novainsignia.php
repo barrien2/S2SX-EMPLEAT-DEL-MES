@@ -25,8 +25,11 @@
           <h6>Nom:</h6>
           <input type="text" name="nom" placeholder="nom insignia" required><br>
 
+          <h6>Valor</h6>
+          <input type="number" name="valor" value=0 required><br>
+
           <h6>Imatge:</h6>
-          
+
           <input type="file" name="image"> <br>
 
           <h6>Limit</h6>
