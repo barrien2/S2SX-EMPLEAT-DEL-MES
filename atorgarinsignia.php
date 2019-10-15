@@ -5,7 +5,15 @@ $treballadors =  array(
   array('nom'=>'Hector','cognnoms'=>'Prieto', 'edat'=>20, 'antiguitat'=>5),
   array('nom'=>'Vanessa','cognnoms'=>'Moreno', 'edat'=>null, 'antiguitat'=>null),
   array('nom'=>'Josep','cognnoms'=>'Gutierrez','edat'=>"aixo es fa en", 'antiguitat'=>"2 linies")
-  );
+);
+
+$insignies =  array(
+  array('nom'=>'class maker', 'value'=>'classmaker'),
+  array('nom'=>'class mate',  'value'=>'classmate'),
+  array('nom'=>'class s2sx',  'value'=>'classs2sx'),
+  array('nom'=>'class s1sx',  'value'=>'classs1sx'),
+  array('nom'=>'class s2am',  'value'=>'classs2am' )
+);
 ?>
 <html>
 <head>
@@ -19,54 +27,57 @@ $treballadors =  array(
 
   </style>
 </head>
-  
-  <body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-      <?php
-        include("header.php");
-      ?>
-      <main class="mdl-layout__content">
-        <div class="page-content">
-          <div class="centerTable">
 
-            <form action="treballadorsinsignies.php" method="post" enctype="multipart/form-data">
-              <h4>Otorgar insignia</h4>
+<body>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <?php
+    include("header.php");
+    ?>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <div class="centerTable">
 
-              <h6>Nom:</h6>
-              <input type="text" name="nom" placeholder="nom insignia" required><br>
+          <form action="treballadorsinsignies.php" method="post" enctype="multipart/form-data">
+            <h4>Otorgar insignia</h4>
 
-              <h6>Valor</h6>
-              <input type="number" name="valor" value=0 required><br>
+            <h6>Insignia:</h6>   
+            <select>
+              <?php
+                foreach ($insignies as $value) {
 
-              <h6>Imatge:</h6>
+                  echo "<option value='".$value["value"]."'>".$value["nom"]."</option>";
 
-              <input type="file" name="image"> <br>
+                }
+                
+              ?>
+              
+            </select><br>
 
-              <h6>Limit</h6>
-              <input type="number" name="limit" value=0 required><br>
+            <h6>Alumnes</h6>
+            <select multiple>
+              <?php
+                foreach ($treballadors as $value) {
 
-              <h6>Data límit</h6>
-              <input type="date" name="datalimit" value="<?php echo date('Y-m-d');?>" required><br>
+                  echo "<option value='".$value["nom"]."'>".$value["nom"]."</option>";
 
-              <h6>Descripcio</h6>
-              <textarea type="textarea" name="descripcio" placeholder="no home no" required></textarea>
+                }
+                
+              ?>
+              
+            </select><br>
 
-              <h6>Actiu</h6>
-              <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="actiu1">
-                <input checked class="mdl-radio__button" id="actiu1" name="actiu" type="radio"
-                value="si">
-                <span class="mdl-radio__label">Si</span>
-              </label>
-              <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="actiu2">
-                <input class="mdl-radio__button" id="actiu2" name="actiu" type="radio" value="no">
-                <span class="mdl-radio__label">No</span>
-              </label>
-              <br/>
-              <input type="submit" value="Enviar dades" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><br>
-            </form>
-          </div>
+            <h6>Data</h6>
+            <input type="date" name="data" value="<?php echo date('Y-m-d');?>"><br>
+            <br>
+            Visible: 
+            <input type="checkbox" name="visible" value="visible">
+            <br/>
+            <br>
+            <input type="submit" value="Enviar dades" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><br>
+          </form>
         </div>
-      </main>
-    </div>
-  </body>
+      </div>
+    </main>
+  </div>
+</body>
 </html>
