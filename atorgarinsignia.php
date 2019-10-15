@@ -41,7 +41,7 @@ $insignies =  array(
             <h4>Otorgar insignia</h4>
 
             <h6>Insignia:</h6>   
-            <select>
+            <select name='insignia'>
               <?php
                 foreach ($insignies as $value) {
 
@@ -54,7 +54,7 @@ $insignies =  array(
             </select><br>
 
             <h6>Alumnes</h6>
-            <select multiple>
+            <select name='Alumnes' multiple>
               <?php
                 foreach ($treballadors as $value) {
 

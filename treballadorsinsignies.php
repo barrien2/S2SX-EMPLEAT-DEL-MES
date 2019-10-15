@@ -1,12 +1,3 @@
-<?php
-$treballadors =  array(
-  array('nom'=>'Xavi','cognnoms'=>'Barriendos', 'edat'=>20, 'antiguitat'=>5),
-  array('nom'=>'Pere','cognnoms'=>'Linares', 'edat'=>18, 'antiguitat'=>2),
-  array('nom'=>'Hector','cognnoms'=>'Prieto', 'edat'=>20, 'antiguitat'=>5),
-  array('nom'=>'Vanessa','cognnoms'=>'Moreno', 'edat'=>null, 'antiguitat'=>null),
-  array('nom'=>'Josep','cognnoms'=>'Gutierrez','edat'=>"aixo es fa en", 'antiguitat'=>"2 linies")
-  );
-?>
 <html>
 <head>
 <title>ARASI</title>
@@ -38,24 +29,27 @@ th {
 
 <div>
   <table class="centerTable" style="overflow-x:auto;">
-      <tr>
-        <th>nom</th>
-        <th>cognoms</th>
-        <th>edat</th>
-        <th>antiguitat</th>
-      </tr>
-      <?php
-        
-        foreach ($treballadors as $value) {
-          echo "<tr>";
-          echo "<td>".$value["nom"]."</td>";
-          echo "<td>".$value['cognnoms']."</td>";
-          echo "<td>".$value['edat']."</td>";
-          echo "<td>".$value['antiguitat']."</td>";
-          echo "</tr>";
-        }
-        
-      ?>
-  </table>
+
+            <tr>
+              <th>nom</th>
+              <th>valor</th>
+              <th>imatge</th>
+              <th>data limit</th>
+              <th>limit</th>
+              <th>descripcio</th>
+              <th>actiu</th>
+            </tr>
+            <?php
+            
+            echo "<tr>";
+            echo "<td>"."</td>";
+            echo "<td>"."</td>";
+            echo "<td>".$_POST['insignia']."</td>";
+            echo "<td>".$_POST['Alumnes']."</td>";
+            echo "<td>".$_POST['data']."</td>";
+            echo "<td>".$_POST['visible']."</td>";
+            echo "</tr>";
+           ?>
+          </table>
 </div>
 </html>
