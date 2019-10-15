@@ -72,10 +72,15 @@ if(is_dir($target_dir)){
               <th>actiu</th>
             </tr>
             <?php
+            include("bbdd.php");
+            $resultat = mysqli_query($con, "INSERT INTO insignies ( nom, puntuacio) VALUES ('".$_POST['nom']."',".$_POST['datalimit'].")");
+
+            if(!$resultat) 
+            { echo "<h1>No anem bé. Error de BBDD: </h1>". mysqli_error($con); }
 
             echo "<tr>";
-            echo "<td>".$_POST["nom"]."</td>";
-            echo "<td>".$_POST["valor"]."</td>";
+            echo "<td>"."</td>";
+            echo "<td>"."</td>";
             if($uploadOk == 1){
               echo "<td>".' <img src = "uploads/'.$_FILES["image"]["name"].'" height="150">';
             }else{

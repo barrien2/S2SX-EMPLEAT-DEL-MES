@@ -1,3 +1,12 @@
+<?php
+$treballadors =  array(
+  array('nom'=>'Xavi','cognnoms'=>'Barriendos', 'edat'=>20, 'antiguitat'=>5),
+  array('nom'=>'Pere','cognnoms'=>'Linares', 'edat'=>18, 'antiguitat'=>2),
+  array('nom'=>'Hector','cognnoms'=>'Prieto', 'edat'=>20, 'antiguitat'=>5),
+  array('nom'=>'Vanessa','cognnoms'=>'Moreno', 'edat'=>null, 'antiguitat'=>null),
+  array('nom'=>'Josep','cognnoms'=>'Gutierrez','edat'=>"aixo es fa en", 'antiguitat'=>"2 linies")
+  );
+?>
 <html>
 <head>
   <title>ARASI</title>
@@ -20,8 +29,8 @@
         <div class="page-content">
           <div class="centerTable">
 
-            <form action="insignies.php" method="post" enctype="multipart/form-data">
-              <h4>Nova insignia</h4>
+            <form action="treballadorsinsignies.php" method="post" enctype="multipart/form-data">
+              <h4>Otorgar insignia</h4>
 
               <h6>Nom:</h6>
               <input type="text" name="nom" placeholder="nom insignia" required><br>
