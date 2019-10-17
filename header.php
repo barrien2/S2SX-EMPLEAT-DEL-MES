@@ -9,6 +9,7 @@
       <nav class="mdl-navigation mdl-layout--large-screen-only">
         <a class="mdl-navigation__link" href="index.php">Inici</a>
         <a class="mdl-navigation__link" href="novainsignia.php">Inserir nova insignia</a>
+        <a class="mdl-navigation__link" href="atorgarinsignia.php">Otorgar insignia</a>
       </nav>
     </div>
   </header>';
