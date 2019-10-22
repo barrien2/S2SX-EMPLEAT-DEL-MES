@@ -31,23 +31,22 @@ th {
   <table class="centerTable" style="overflow-x:auto;">
 
             <tr>
-              <th>nom</th>
-              <th>valor</th>
-              <th>imatge</th>
-              <th>data limit</th>
-              <th>limit</th>
-              <th>descripcio</th>
-              <th>actiu</th>
+              <th>Insignia</th>
+              <th>Treballadors</th>
+              <th>Data</th>
+              <th>Visible</th>
             </tr>
             <?php
             
             echo "<tr>";
-            echo "<td>"."</td>";
-            echo "<td>"."</td>";
             echo "<td>".$_POST['insignia']."</td>";
-            echo "<td>".$_POST['Alumnes']."</td>";
+            echo "<td>".$_POST['treballadors']."</td>";
             echo "<td>".$_POST['data']."</td>";
-            echo "<td>".$_POST['visible']."</td>";
+            if (isset($_POST['visible'])){
+              echo "<td>Si</td>";
+            }else{
+              echo "<td>No</td>";
+            }
             echo "</tr>";
            ?>
           </table>
