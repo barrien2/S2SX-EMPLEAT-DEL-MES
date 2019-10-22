@@ -1,3 +1,14 @@
+<?php 
+$treballadors = $_POST['treballadors'];
+
+for ($i=0;$i<count($treballadors);$i++)    {   
+  $resultat = mysqli_query($con, "INSERT INTO treballadors_insignies (id_insignia, id_treballador, data_otorgat) VALUES (".$_POST['insignia'].",".$treballadors[$i].",'current_timestamp()')");
+
+}
+            if(!$resultat) 
+            { echo "<h1>No anem bé. Error de BBDD: </h1>". mysqli_error($con); }
+?>
+
 <html>
 <head>
 <title>ARASI</title>
@@ -38,10 +49,7 @@ th {
             </tr>
             <?php
             
-            $treballadors = $_POST['treballadors'];
-
-            for ($i=0;$i<count($treballadors);$i++)    
-            {     
+              
               
               echo "<tr>";
               echo "<td>".$_POST['insignia']."</td>";
@@ -53,7 +61,7 @@ th {
                 echo "<td>No</td>";
               }
               echo "</tr>";
-              } 
+              
 
             
            ?>

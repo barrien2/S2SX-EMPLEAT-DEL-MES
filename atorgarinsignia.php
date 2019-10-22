@@ -1,20 +1,8 @@
-<?php
-$treballadors =  array(
-  array('nom'=>'Xavi','cognnoms'=>'Barriendos', 'edat'=>20, 'antiguitat'=>5),
-  array('nom'=>'Pere','cognnoms'=>'Linares', 'edat'=>18, 'antiguitat'=>2),
-  array('nom'=>'Hector','cognnoms'=>'Prieto', 'edat'=>20, 'antiguitat'=>5),
-  array('nom'=>'Vanessa','cognnoms'=>'Moreno', 'edat'=>null, 'antiguitat'=>null),
-  array('nom'=>'Josep','cognnoms'=>'Gutierrez','edat'=>"aixo es fa en", 'antiguitat'=>"2 linies")
-);
+<?php 
+  include("bbdd.php");
 
-$insignies =  array(
-  array('nom'=>'class maker', 'value'=>'classmaker'),
-  array('nom'=>'class mate',  'value'=>'classmate'),
-  array('nom'=>'class s2sx',  'value'=>'classs2sx'),
-  array('nom'=>'class s1sx',  'value'=>'classs1sx'),
-  array('nom'=>'class s2am',  'value'=>'classs2am' )
-);
 ?>
+
 <html>
 <head>
   <title>ARASI</title>
@@ -43,12 +31,14 @@ $insignies =  array(
             <h6>Insignia:</h6>   
             <select name='insignia'>
               <?php
-                foreach ($insignies as $value) {
-
-                  echo "<option value='".$value["value"]."'>".$value["nom"]."</option>";
-
-                }
-                
+                $consulta = "SELECT id, nom FROM insignies";
+                  if ($resultado = mysqli_query($con, $consulta)) {
+                    while ($fila = mysqli_fetch_assoc($resultado)) {
+                       echo "<option value='".$fila["id"]."'>".$fila["nom"]."</option>";
+                    }
+                  }else{
+                    echo "ERROR CONNCECTION";
+                  }
               ?>
               
             </select><br>
@@ -56,11 +46,18 @@ $insignies =  array(
             <h6>Treballadors</h6>
             <select name='treballadors[]' multiple>
               <?php
-                foreach ($treballadors as $value) {
+                
 
-                  echo "<option value='".$value["nom"]."'>".$value["nom"]."</option>";
+                  $consulta = "SELECT id, nom FROM treballadors";
+                  if ($resultado = mysqli_query($con, $consulta)) {
+                    while ($fila = mysqli_fetch_assoc($resultado)) {
+                       echo "<option value='".$fila["id"]."'>".$fila["nom"]."</option>";
+                    }
+                  }else{
+                    echo "ERROR CONNCECTION";
+                  }
 
-                }
+                
                 
               ?>
               
