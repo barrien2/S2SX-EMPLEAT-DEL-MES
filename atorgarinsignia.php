@@ -54,7 +54,7 @@ $insignies =  array(
             </select><br>
 
             <h6>Treballadors</h6>
-            <select name='treballadors' multiple>
+            <select name='treballadors[]' multiple>
               <?php
                 foreach ($treballadors as $value) {
 

@@ -38,16 +38,24 @@ th {
             </tr>
             <?php
             
-            echo "<tr>";
-            echo "<td>".$_POST['insignia']."</td>";
-            echo "<td>".$_POST['treballadors']."</td>";
-            echo "<td>".$_POST['data']."</td>";
-            if (isset($_POST['visible'])){
-              echo "<td>Si</td>";
-            }else{
-              echo "<td>No</td>";
-            }
-            echo "</tr>";
+            $treballadors = $_POST['treballadors'];
+
+            for ($i=0;$i<count($treballadors);$i++)    
+            {     
+              
+              echo "<tr>";
+              echo "<td>".$_POST['insignia']."</td>";
+              echo "<td>".$treballadors[$i]."</td>";
+              echo "<td>".$_POST['data']."</td>";
+              if (isset($_POST['visible'])){
+                echo "<td>Si</td>";
+              }else{
+                echo "<td>No</td>";
+              }
+              echo "</tr>";
+              } 
+
+            
            ?>
           </table>
 </div>
