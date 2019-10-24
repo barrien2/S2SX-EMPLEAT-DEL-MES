@@ -20,6 +20,16 @@ if(is_dir($target_dir)){
     $uploadOk = 0;
   }
 }
+
+include ("bbdd.php");
+
+  $insert = "INSERT INTO insignies (nom, puntuacio, limit_insignies, imatge) VALUES ('".$_POST['nom']."',".$_POST['valor'].",".$_POST['limit'].","."'".$_FILES['image']['name']."')";
+  $resultat = mysqli_query($con, $insert);
+  if(!$resultat) 
+  { 
+    echo "<h1>No anem bé. Error de BBDD: </h1>". mysqli_error($con); 
+  }
+
 ?>
 
 <html>
@@ -63,34 +73,35 @@ if(is_dir($target_dir)){
           <table class="centerTable" style="overflow-x:auto;">
 
             <tr>
+              <th>Imatge</th>
               <th>nom</th>
-              <th>valor</th>
-              <th>imatge</th>
-              <th>data limit</th>
-              <th>limit</th>
-              <th>descripcio</th>
-              <th>actiu</th>
+              <th>Maxim</th>
+              <th>Otorgades</th>
+              <th>Valor</th>
             </tr>
             <?php
-            include("bbdd.php");
-            $resultat = mysqli_query($con, "INSERT INTO insignies ( nom, puntuacio) VALUES ('".$_POST['nom']."',".$_POST['datalimit'].")");
-
-            if(!$resultat) 
-            { echo "<h1>No anem bé. Error de BBDD: </h1>". mysqli_error($con); }
-
-            echo "<tr>";
-            echo "<td>"."</td>";
-            echo "<td>"."</td>";
-            if($uploadOk == 1){
-              echo "<td>".' <img src = "uploads/'.$_FILES["image"]["name"].'" height="150">';
-            }else{
-              echo "<td> </td>";
-            }
-            echo "<td>".$_POST['datalimit']."</td>";
-            echo "<td>".$_POST['limit']."</td>";
-            echo "<td>".$_POST['descripcio']."</td>";
-            echo "<td>".$_POST['actiu']."</td>";
-            echo "</tr>";
+            $consulta = "SELECT i.nom as nom, i.limit_insignies, COUNT(ti.id) as otorgades, i.puntuacio, i.imatge
+                FROM insignies i 
+                LEFT JOIN treballadors_insignies ti on (ti.id_insignia = i.id)
+                GROUP by i.id
+                ";
+                  if ($resultado = mysqli_query($con, $consulta)) {
+                    while ($fila = mysqli_fetch_assoc($resultado)) {
+                      echo "<tr>";
+                      if(!empty($fila["imatge"])){
+                        echo "<td>".' <img src = "uploads/'.$fila["imatge"].'" height="150">';
+                      }else{
+                        echo "<td> </td>";
+                      }
+                      echo "<td>".$fila["nom"]."</td>";         
+                      echo "<td>".$fila["limit_insignies"]."</td>";
+                      echo "<td>".$fila["otorgades"]."</td>";
+                      echo "<td>".$fila["puntuacio"]."</td>";
+                      echo "</tr>";
+                    }
+                  }else{
+                    echo "ERROR CONNCECTION";
+                  } 
 
 
             ?>

@@ -1,8 +1,11 @@
 <?php 
 $treballadors = $_POST['treballadors'];
 
+include ("bbdd.php");
 for ($i=0;$i<count($treballadors);$i++)    {   
-  $resultat = mysqli_query($con, "INSERT INTO treballadors_insignies (id_insignia, id_treballador, data_otorgat) VALUES (".$_POST['insignia'].",".$treballadors[$i].",'current_timestamp()')");
+
+  $insert = "INSERT INTO treballadors_insignies (id_insignia, id_treballador) VALUES (".$_POST['insignia'].",".$treballadors[$i].")";
+  $resultat = mysqli_query($con, $insert);
 
 }
             if(!$resultat) 
@@ -38,32 +41,32 @@ th {
 
 </style>
 
-<div>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <?php
+    include("header.php");
+    ?>
   <table class="centerTable" style="overflow-x:auto;">
 
             <tr>
               <th>Insignia</th>
               <th>Treballadors</th>
               <th>Data</th>
-              <th>Visible</th>
             </tr>
             <?php
-            
-              
-              
-              echo "<tr>";
-              echo "<td>".$_POST['insignia']."</td>";
-              echo "<td>".$treballadors[$i]."</td>";
-              echo "<td>".$_POST['data']."</td>";
-              if (isset($_POST['visible'])){
-                echo "<td>Si</td>";
-              }else{
-                echo "<td>No</td>";
-              }
-              echo "</tr>";
-              
-
-            
+                  $consulta = "SELECT t.nom as treballador, i.nom as insignia, ti.data_otorgat as data_otorgat FROM treballadors_insignies ti
+                    INNER JOIN treballadors t on (ti.id_treballador = t.id)
+                    INNER JOIN insignies i on (ti.id_insignia = i.id);";
+                  if ($resultado = mysqli_query($con, $consulta)) {
+                    while ($fila = mysqli_fetch_assoc($resultado)) {
+                      echo "<tr>";
+                      echo "<td>".$fila["insignia"]."</td>";         
+                      echo "<td>".$fila["treballador"]."</td>";
+                      echo "<td>".$fila["data_otorgat"]."</td>";
+                      echo "</tr>";
+                    }
+                  }else{
+                    echo "ERROR CONNCECTION";
+                  }      
            ?>
           </table>
 </div>
