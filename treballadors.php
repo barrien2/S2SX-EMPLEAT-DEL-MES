@@ -27,7 +27,10 @@ th {
 
 </style>
 
-<div>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <?php
+    include("header.php");
+    ?>
   <table class="centerTable" style="overflow-x:auto;">
       <tr>
         <th>Treballador</th>

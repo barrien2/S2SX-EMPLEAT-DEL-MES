@@ -1,27 +1,31 @@
 <?php
-
-$target_dir = "uploads/";
-if(is_dir($target_dir)){
-  $target_file = $target_dir . basename($_FILES["image"]["name"]);
-  $uploadOk = 1;
-  $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-    // Check if image file is a actual image or fake image
-  if(isset($_FILES["image"]["name"]) && $_FILES["image"]["name"] != '') {
-
-    $check = getimagesize($_FILES["image"]["tmp_name"]);
-
-    if($check !== false) {
-      move_uploaded_file($_FILES["image"]['tmp_name'], $target_file);
-      $uploadOk = 1;
-    } 
-  }
-  else {
-
-    $uploadOk = 0;
-  }
-}
-
 include ("bbdd.php");
+if(isset($_POST["action"])&& $_POST["action"]=="insert"){
+
+
+  $target_dir = "uploads/";
+  if(is_dir($target_dir)){
+    $target_file = $target_dir . basename($_FILES["image"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+      // Check if image file is a actual image or fake image
+    if(isset($_FILES["image"]["name"]) && $_FILES["image"]["name"] != '') {
+
+      $check = getimagesize($_FILES["image"]["tmp_name"]);
+
+      if($check !== false) {
+        move_uploaded_file($_FILES["image"]['tmp_name'], $target_file);
+        $uploadOk = 1;
+      } 
+    }
+    else {
+
+      $uploadOk = 0;
+    }
+  }
+
+
+
 
   $insert = "INSERT INTO insignies (nom, puntuacio, limit_insignies, imatge) VALUES ('".$_POST['nom']."',".$_POST['valor'].",".$_POST['limit'].","."'".$_FILES['image']['name']."')";
   $resultat = mysqli_query($con, $insert);
@@ -29,7 +33,7 @@ include ("bbdd.php");
   { 
     echo "<h1>No anem bé. Error de BBDD: </h1>". mysqli_error($con); 
   }
-
+}
 ?>
 
 <html>

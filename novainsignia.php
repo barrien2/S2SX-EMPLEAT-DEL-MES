@@ -55,6 +55,7 @@
               <br/>
               <input type="submit" value="Enviar dades" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><br>
               <input type="reset" value="Esborrar" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><br>
+              <input type="hidden" name="action" value="insert">
             </form>
           </div>
         </div>
