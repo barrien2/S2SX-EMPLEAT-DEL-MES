@@ -21,7 +21,7 @@
           <div class="centerTable">
 
             <form action="insignies.php" method="post" enctype="multipart/form-data">
-              <h4>Nova insignia</h4>
+              <h4>Nou treballador</h4>
 
               <h6>Nom:</h6>
               <input type="text" name="nom" placeholder="nom insignia" required><br>

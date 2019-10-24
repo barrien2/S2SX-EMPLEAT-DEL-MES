@@ -1,12 +1,3 @@
-<?php
-$treballadors =  array(
-  array('nom'=>'Xavi','cognnoms'=>'Barriendos', 'edat'=>20, 'antiguitat'=>5),
-  array('nom'=>'Pere','cognnoms'=>'Linares', 'edat'=>18, 'antiguitat'=>2),
-  array('nom'=>'Hector','cognnoms'=>'Prieto', 'edat'=>20, 'antiguitat'=>5),
-  array('nom'=>'Vanessa','cognnoms'=>'Moreno', 'edat'=>null, 'antiguitat'=>null),
-  array('nom'=>'Josep','cognnoms'=>'Gutierrez','edat'=>"aixo es fa en", 'antiguitat'=>"2 linies")
-  );
-?>
 <html>
 <head>
 <title>ARASI</title>
@@ -39,22 +30,29 @@ th {
 <div>
   <table class="centerTable" style="overflow-x:auto;">
       <tr>
-        <th>nom</th>
-        <th>cognoms</th>
-        <th>edat</th>
-        <th>antiguitat</th>
+        <th>Treballador</th>
+        <th># Insignies</th>
+        <th>Puntuació total</th>
       </tr>
       <?php
-        
-        foreach ($treballadors as $value) {
-          echo "<tr>";
-          echo "<td>".$value["nom"]."</td>";
-          echo "<td>".$value['cognnoms']."</td>";
-          echo "<td>".$value['edat']."</td>";
-          echo "<td>".$value['antiguitat']."</td>";
-          echo "</tr>";
-        }
-        
+      include ("bbdd.php");
+        $consulta = "SELECT concat(t.nom,' ',t.cognom) as treballador, count(ti.id) as insignies, sum(i.puntuacio) as puntuacio
+        FROM treballadors t
+        INNER JOIN treballadors_insignies ti on (ti.id_treballador = t.id)
+        INNER JOIN insignies i on (ti.id_insignia = i.id)
+        GROUP BY t.id
+        ORDER BY count(ti.id) desc, sum(i.puntuacio) desc";
+                  if ($resultado = mysqli_query($con, $consulta)) {
+                    while ($fila = mysqli_fetch_assoc($resultado)) {
+                      echo "<tr>";
+                      echo "<td>".$fila["treballador"]."</td>";         
+                      echo "<td>".$fila["insignies"]."</td>";
+                      echo "<td>".$fila["puntuacio"]."</td>";
+                      echo "</tr>";
+                    }
+                  }else{
+                    echo "ERROR CONNCECTION";
+                  } 
       ?>
   </table>
 </div>

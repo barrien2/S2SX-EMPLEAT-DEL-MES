@@ -10,6 +10,7 @@
         <a class="mdl-navigation__link" href="index.php">Inici</a>
         <a class="mdl-navigation__link" href="novainsignia.php">Inserir nova insignia</a>
         <a class="mdl-navigation__link" href="atorgarinsignia.php">Otorgar insignia</a>
+        <a class="mdl-navigation__link" href="treballadors.php">Llista treballadors</a>
       </nav>
     </div>
   </header>';

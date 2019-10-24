@@ -40,14 +40,16 @@ include("bbdd.php");
       <div class="page-content">
         <h1>L'empleat d'aquest més és: 
         <?php
-                $consulta = "select t.nom, sum(i.puntuacio)
-                  from treballadors t
+                $consulta = "SELECT concat(t.nom,' ',t.cognom) as treballador, count(ti.id) as insignies, sum(i.puntuacio) as puntuacio
+                  FROM treballadors t
                   INNER JOIN treballadors_insignies ti on (ti.id_treballador = t.id)
                   INNER JOIN insignies i on (ti.id_insignia = i.id)
-                  order by sum(i.puntuacio) desc limit 1";
+                  GROUP BY t.id
+                  ORDER BY count(ti.id) desc, sum(i.puntuacio) desc 
+                  limit 1";
                   if ($resultado = mysqli_query($con, $consulta)) {
                     $fila = mysqli_fetch_assoc($resultado);
-                    echo $fila["nom"];
+                    echo $fila["treballador"];
                     
                   }else{
                     echo "ERROR CONNCECTION";
