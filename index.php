@@ -45,7 +45,7 @@ include("bbdd.php");
                   INNER JOIN treballadors_insignies ti on (ti.id_treballador = t.id)
                   INNER JOIN insignies i on (ti.id_insignia = i.id)
                   GROUP BY t.id
-                  ORDER BY count(ti.id) desc, sum(i.puntuacio) desc 
+                  ORDER BY sum(i.puntuacio) desc 
                   limit 1";
                   if ($resultado = mysqli_query($con, $consulta)) {
                     $fila = mysqli_fetch_assoc($resultado);

@@ -1,8 +1,9 @@
 <?php
 include ("bbdd.php");
+
+//comprovar que s'ha enviat desde el formulari de inserir
 if(isset($_POST["action"])&& $_POST["action"]=="insert"){
-
-
+  //pujar imatge al servidor
   $target_dir = "uploads/";
   if(is_dir($target_dir)){
     $target_file = $target_dir . basename($_FILES["image"]["name"]);
@@ -24,14 +25,12 @@ if(isset($_POST["action"])&& $_POST["action"]=="insert"){
     }
   }
 
-
-
-
+  //inserir la insignia del formulari a bbdd
   $insert = "INSERT INTO insignies (nom, puntuacio, limit_insignies, imatge) VALUES ('".$_POST['nom']."',".$_POST['valor'].",".$_POST['limit'].","."'".$_FILES['image']['name']."')";
   $resultat = mysqli_query($con, $insert);
   if(!$resultat) 
   { 
-    echo "<h1>No anem bé. Error de BBDD: </h1>". mysqli_error($con); 
+    echo "<h1>El nom de la insignia ja existeix</h1>"; 
   }
 }
 ?>
@@ -93,7 +92,7 @@ if(isset($_POST["action"])&& $_POST["action"]=="insert"){
                     while ($fila = mysqli_fetch_assoc($resultado)) {
                       echo "<tr>";
                       if(!empty($fila["imatge"])){
-                        echo "<td>".' <img src = "uploads/'.$fila["imatge"].'" height="150">';
+                        echo "<td>".' <img src = "uploads/'.$fila["imatge"].'" height="25">';
                       }else{
                         echo "<td> </td>";
                       }

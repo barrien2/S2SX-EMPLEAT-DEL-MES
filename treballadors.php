@@ -41,8 +41,8 @@ th {
       include ("bbdd.php");
         $consulta = "SELECT concat(t.nom,' ',t.cognom) as treballador, count(ti.id) as insignies, sum(i.puntuacio) as puntuacio
         FROM treballadors t
-        INNER JOIN treballadors_insignies ti on (ti.id_treballador = t.id)
-        INNER JOIN insignies i on (ti.id_insignia = i.id)
+        LEFT JOIN treballadors_insignies ti on (ti.id_treballador = t.id)
+        LEFT JOIN insignies i on (ti.id_insignia = i.id)
         GROUP BY t.id
         ORDER BY count(ti.id) desc, sum(i.puntuacio) desc";
                   if ($resultado = mysqli_query($con, $consulta)) {

@@ -26,25 +26,10 @@
         <div class="centerTable">
 
           <form action="treballadorsinsignies.php" method="post" enctype="multipart/form-data">
-            <h4>Otorgar insignia</h4>
-
-            <h6>Insignia:</h6>   
-            <select name='insignia'>
-              <?php
-                $consulta = "SELECT id, nom FROM insignies";
-                  if ($resultado = mysqli_query($con, $consulta)) {
-                    while ($fila = mysqli_fetch_assoc($resultado)) {
-                       echo "<option value='".$fila["id"]."'>".$fila["nom"]."</option>";
-                    }
-                  }else{
-                    echo "ERROR BBDD";
-                  }
-              ?>
-              
-            </select><br>
-
-            <h6>Treballadors</h6>
-            <select name='treballadors[]' multiple>
+            <h4>Consultar insignies atorgades de: </h4>
+            <h6>Treballador</h6>
+            <select name='treballador'>
+                <option value="*tots*" >*Tots*</option>
               <?php
                   $consulta = "SELECT id, nom FROM treballadors";
                   if ($resultado = mysqli_query($con, $consulta)) {
@@ -56,18 +41,9 @@
                   }                
               ?>
               
-            </select><br>
-
-            <h6>Data</h6>
-            <input type="date" name="data" value="<?php echo date('Y-m-d');?>"><br>
-            <br>
-            Visible: 
-            <input type="checkbox" name="visible" value="visible">
-            <br/>
-            <br>
+            </select><br><br>
             <input type="submit" value="Enviar dades" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><br>
-            <input type="reset" value="Esborrar" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><br>
-            <input type="hidden" name="action" value="insert">      
+            <input type="hidden" name="action" value="filter">      
           </form>
         </div>
       </div>
