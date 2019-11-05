@@ -13,6 +13,7 @@
         <a class="mdl-navigation__link" href="treballadors.php">Llista treballadors</a>
         <a class="mdl-navigation__link" href="insignies.php">Llista insignies</a>
         <a class="mdl-navigation__link" href="consultaratorgades.php">Llista atorgades</a>
+        <a class="mdl-navigation__link" href="inserirtreballadors.php">Inserir treballadors</a>
       </nav>
     </div>
   </header>';

@@ -20,7 +20,7 @@
         <div class="page-content">
           <div class="centerTable">
 
-            <form action="insignies.php" method="post" enctype="multipart/form-data">
+            <form action="scripttreballadors.php" method="post" enctype="multipart/form-data">
               <h4>Inserir treballadors</h4>
 
               
